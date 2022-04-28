@@ -27,7 +27,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class CurrentSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='current_detail')
+    url = serializers.HyperlinkedIdentityField(view_name='current_detail', read_only=True)
     during_time = serializers.SerializerMethodField(read_only=True)
     subtitles = serializers.SerializerMethodField(read_only=True)
 

@@ -1,19 +1,18 @@
-from datetime import timezone
-
 from django.contrib.auth.models import User
-from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .models import Current, List
 import datetime
 
-
 # Create your tests here.
+from .serializers import CurrentSerializer
+from .models import Current, List
+
+
 class CurrentListTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='example123', password='example123')
-        self.current = Current.objects.create(title='Привычка', author=self.user, start=datetime.date.today(),
+        self.current = Current.objects.create(title='Work', author=self.user, start=datetime.date.today(),
                                               end=datetime.date.today())
 
     def test_list(self):
