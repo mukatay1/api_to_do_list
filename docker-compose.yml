@@ -11,6 +11,7 @@ services:
     command: python manage.py runserver 0.0.0.0:7000
     depends_on:
       - db
+
   db:
     image: postgres
     volumes:
@@ -20,6 +21,26 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     container_name: postgres_db
+
+#  redis:
+#    image: redis
+#    container_name: redis_container
+#
+#  celery:
+#    restart: always
+#    build:
+#      context: .
+#    command: celery -A Satus worker -l info
+#    volumes:
+#      - .:/django
+#    container_name: celery_container
+#    depends_on:
+#      - redis
+#      - app
+
+
+
+
 
 
 
